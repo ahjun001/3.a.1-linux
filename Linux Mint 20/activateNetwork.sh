@@ -66,6 +66,14 @@ i)
     nmcli device connect "$my_device"
     echo $?
     ;;
+8)
+    sudo /etc/init.d/networking restart
+    echo $?
+    ;;
+9)
+    sudo apt install network-manager --reinstall
+    echo $?
+    ;;
 *)
     echo 'activateNetwork.sh [NOC, MSSB] [1-6]'
     ;;
