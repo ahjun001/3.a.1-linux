@@ -121,7 +121,7 @@ PROMPT='%{$fg[$NCOLOR]%}%B%n%b%{$reset_color%}:%{$fg[blue]%}%B%~%b%{$reset_color
 RPROMPT='%1v [%*]'
 
 precmd() {
-        psvar[1]=$(expressvpn status | grep -q Not && echo 'VPN Off' || echo 'VPN On')
+        psvar[1]=$(expressvpn status | grep -q Not && echo 'VPN:Off' || echo 'VPN:On')
 }
 
 
