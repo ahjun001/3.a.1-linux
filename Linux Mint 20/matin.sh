@@ -4,4 +4,5 @@ set -x
 sudo apt update -y && sudo apt upgrade -y && sudo apt autoremove -y
 echo xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 sudo youtube-dl -U
+sudo systemctl restart NetworkManager
 set +x
