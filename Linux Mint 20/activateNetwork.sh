@@ -43,11 +43,11 @@ i)
     nmcli networking on
     ;;
 2)
-    systemctl restart networking
+    sudo systemctl restart networking
     echo $?
     ;;
 3)
-    systemctl restart NetworkManager
+    sudo systemctl restart NetworkManager
     echo $?
     ;;
 4)
