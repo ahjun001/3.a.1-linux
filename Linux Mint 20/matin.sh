@@ -1,4 +1,5 @@
 #!/usr/bin/env dash
+
 clear
 set -x
 expressvpn status
