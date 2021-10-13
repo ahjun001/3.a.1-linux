@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# cp -vf ../tmp_source/i.* .
+cd /home/perubu/.local/share/Anki2/pj/collection.media
 for file in *.jpg *.png *.gif *.jpeg; do
   # echo "$file"
   width=`convert "$file[0]" -format '%w' info:`
