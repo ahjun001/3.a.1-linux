@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/usr/bin/env bash
 
 # /usr/local/sbin/_restore_minimized_wins.sh
 
