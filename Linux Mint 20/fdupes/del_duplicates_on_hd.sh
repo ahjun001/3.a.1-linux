@@ -10,12 +10,8 @@ ROOT=${TEST_DIR}
 OPTSTR='r:' # dev & test take default ROOT, prod requires ROOT to be defined
 while getopts $OPTSTR flag; do
     case $flag in
-    r)
-        ROOT=${OPTARG}
-        ;;
-    *)
-        usage
-        ;;
+    r) ROOT=${OPTARG} ;;
+    *) usage ;;
     esac
 done
 
@@ -23,18 +19,18 @@ done
 if [ ${ROOT} == ${TEST_DIR} ]; then
     filename=$0
     filename="${filename%.*}"
-    test_file="${filename}""_test.sh"  # adding _test to file being tested by convention
+    test_file="${filename}""_test.sh" # adding _test to file being tested by convention
     ./${test_file} -r ${ROOT}
 else
     [ ! -d ${ROOT} ] && echo -e "Directory ${ROOT} DOES NOT exists.\nExiting ..." && exit
 fi
 
-fdupes -rNS -o name ${ROOT}
+fdupes -rdNS -o name ${ROOT}
 # r recurse
 # d delete
 # N no prompt
 # S show size of duplicates
-# o name 
+# o name
 
 echo -e "\n\n"
 
