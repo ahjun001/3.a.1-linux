@@ -8,6 +8,7 @@ usage() {
 TEST_DIR='/tmp/fdupes_test'
 ROOT=${TEST_DIR}
 OPTSTR='r:' # dev & test take default ROOT, prod requires ROOT to be defined
+# requires nothing (default, will continue execution) or -r arg, other situations will trigger getops error message and exit
 while getopts $OPTSTR flag; do
     case $flag in
     r) ROOT=${OPTARG} ;;
