@@ -125,3 +125,5 @@ precmd() {
 }
 
 
+# go to ~/Desktop -- pjp
+cd ~/Desktop
