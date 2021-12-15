@@ -35,6 +35,9 @@ find /home/perubu/Documents/${GitHubDir}/3.a.1-linux/Linux\ Mint\ 20/ -type f -n
 # link to VSCode snippets
 find /home/perubu/Documents/${GitHubDir}/3.a.2-vsCode/config/Code/User/snippets/ -type f -name '*.json' -exec sudo ln -fs {} /home/perubu/.config/Code/User/snippets/ \;
 
+# link to VSCode tasks.json
+ln -fs '/home/perubu/Documents/'"${GitHubDir}"'/3.a.2-vsCode/config/Code/User/tasks.json' '/home/perubu/.config/Code/User/'
+
 # put shellSpec in path
 ln -fs '/home/perubu/.local/lib/shellspec/shellspec' '/usr/local/sbin/'
 
