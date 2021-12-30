@@ -3,12 +3,21 @@
 clear
 set -x
 expressvpn status
-echo; echo; echo
+cat <<EOF
+
+
+EOF
 ,width_reduce.sh &
-echo; echo; echo
-sudo apt update -y && sudo apt upgrade -y
+cat <<EOF
+
+
+EOF
+echo sudo apt update -y && sudo apt upgrade -y
 # sudo apt autoremove -y
 # sudo systemctl restart NetworkManager
-echo; echo; echo
+cat <<EOF
+
+
+EOF
 sudo yt-dlp -U
 set +x
