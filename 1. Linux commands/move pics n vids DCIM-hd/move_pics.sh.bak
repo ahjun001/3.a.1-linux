@@ -14,8 +14,8 @@ dev)
     to_dir=./to_dir
     ;;
 expl)
-    from_dir=./Camera
-    to_dir=./my_pics
+    from_dir=mnt:/
+    to_dir=/home/perubu/Desktop/my_redmi
     ;;
 *)
     echo should not happen && exit
@@ -32,9 +32,9 @@ for full_file in "$from_dir"/*; do
         file=$(basename -- "$full_file")
         # extension="${file##*.}"
         file="${file%.*}"
-        y="${file:4:2}"
-        m="${file:8:2}"
-        d="${file:10:2}"
+        y="${file:4:-11}"
+        m="${file:8:-9}"
+        d="${file:10:-7}"
 
         day_dir=$y-$m-$d
         # create day dir if does not exist
