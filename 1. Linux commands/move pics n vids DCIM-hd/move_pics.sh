@@ -1,47 +1,30 @@
 #!/usr/bin/env bash
 
-# -e to exit on error
-# -u to exit on unset variables
-# -x to echo commands for degub purposes
-[[ -n ${MY_ENV+foo} ]] || MY_ENV=eu
-set -$MY_ENV
-
-# set dirs
-my_env=dev
-case $my_env in
-dev)
-    from_dir=./from_dir
-    to_dir=./to_dir
-    ;;
-expl)
-    from_dir=./Camera
-    to_dir=./my_pics
-    ;;
-*)
-    echo should not happen && exit
-    ;;
-esac
-
-# check dirs
-[[ -d $from_dir ]] || (echo $from_dir does not exists, exiting && exit 1)
-[[ -d $to_dir ]] || (echo $to_dir does not exists, exiting && exit 1)
+set -euo pipefail
+set -x
+# shellcheck source=/dev/null
+source ./set_envt.sh
 
 # move files
-for full_file in "$from_dir"/*; do
+i=0
+for full_file in "${from_dir:?}"/*; do
+    echo full_file = "$full_file"
     if [[ -f $full_file ]]; then
         file=$(basename -- "$full_file")
         # extension="${file##*.}"
         file="${file%.*}"
-        y="${file:4:2}"
+        y="${file:4:4}"
         m="${file:8:2}"
         d="${file:10:2}"
 
         day_dir=$y-$m-$d
         # create day dir if does not exist
-        if ! [[ -d $day_dir ]]; then mkdir -p $to_dir/"$day_dir"; fi
+        if ! [[ -d $day_dir ]]; then mkdir -p "${to_dir:?}"/"$day_dir"; fi
         # move file
-        mv -v "$full_file" $to_dir/"$day_dir"/
+        rsync -auvP --remove-source-files "$full_file" "$to_dir"/"$day_dir"/
     fi
+    ((i++)) || :
+    ((i >= 3)) && break
 done
 
-echo "exited $0 with code=$?"
+nemo "$from_dir" "$to_dir"
